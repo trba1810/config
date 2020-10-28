@@ -5,8 +5,7 @@ class Test
 {
     public $x;
 
-    public function try()
-    {
-        $this->x = $x;
+    public function __construct() {
+        $this->x = 4;
     }
 }
