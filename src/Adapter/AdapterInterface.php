@@ -1,5 +1,5 @@
 <?php
-namespace Practice2020\Config; 
+namespace Practice2020\Config\Adapter; 
 
 interface AdapterInterface
 {
