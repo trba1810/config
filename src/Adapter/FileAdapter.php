@@ -1,7 +1,7 @@
 <?php
 namespace Practice2020\Config\Adapter;
 
-use AdapterInterface;
+// use AdapterInterface;
 // Jel sme i kako ako sme da koristim interface koji je u razlicitom fajlu od klase??
 
 class FileAdapter implements AdapterInterface
@@ -44,16 +44,14 @@ class FileAdapter implements AdapterInterface
         //procitati kontent fajla
         //pokusati json decode i return
         // Jel ovo trebalo??
-
         $file = file_get_contents($path, true);
-        return json_decode($file);
+        return json_decode($file, JSON_OBJECT_AS_ARRAY);
 
     }
 
-    public function getData($data)
+    public function getData()
     {
-
-        return $this->json_decode($data);
+        return $this->data;
     }
 
     public function set($name, $value)
@@ -61,7 +59,7 @@ class FileAdapter implements AdapterInterface
         $this->data[$name] = $value;
     }
 
-    public function get($name, $default)
+    public function get($name, $default = null)
     {
         if($this->exists($name)){
             return $this->data[$name];
