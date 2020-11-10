@@ -6,7 +6,6 @@ namespace Practice2020\Config\Adapter;
 
 class FileAdapter implements AdapterInterface
 {
-
     private $data = [];
 
     public function __construct($path)
@@ -22,7 +21,7 @@ class FileAdapter implements AdapterInterface
                 $this->data = $this->readXml($path);
             break;
             case "php":
-                // nesto
+                $this->data = include $file_path;
             break;
             default:
                 throw new Exception('wrong extension');
@@ -35,15 +34,10 @@ class FileAdapter implements AdapterInterface
         $new = simplexml_load_string($file); 
         $con = json_encode($new); 
         $newArr = json_decode($con, true);
-
-        // jel ovako trebalo xml to object,object to json,json to array???
     }
 
     private function readJson($path)
     {
-        //procitati kontent fajla
-        //pokusati json decode i return
-        // Jel ovo trebalo??
         $file = file_get_contents($path, true);
         return json_decode($file, JSON_OBJECT_AS_ARRAY);
 
