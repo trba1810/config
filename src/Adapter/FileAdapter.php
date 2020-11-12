@@ -1,8 +1,6 @@
 <?php
 namespace Practice2020\Config\Adapter;
 
-// use AdapterInterface;
-// Jel sme i kako ako sme da koristim interface koji je u razlicitom fajlu od klase??
 
 class FileAdapter implements AdapterInterface
 {
@@ -34,6 +32,7 @@ class FileAdapter implements AdapterInterface
         $new = simplexml_load_string($file); 
         $con = json_encode($new); 
         $newArr = json_decode($con, true);
+        return $newArr;
     }
 
     private function readJson($path)

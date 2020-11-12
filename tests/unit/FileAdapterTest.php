@@ -15,6 +15,13 @@ class FileAdapterTest extends \PHPUnit_Framework_TestCase
     }
 
     // jedan test da je greska na kostruktoru ocekivani rezultat-- domaci
+    //nisam znao
+    public function testConstructError()
+    {
+        $adapter = new FileAdapter();
+        $expected = false;
+        $this->assertFalse($expected);
+    }
 
     public function testJsonFile()
     {
@@ -27,4 +34,11 @@ class FileAdapterTest extends \PHPUnit_Framework_TestCase
     }
 
     //proveriti dal radi xml, i ostale metode
+    public function testXmlFile()
+    {
+        $adapter = new FileAdapter('tests\unit\testfiles\xmlFile.xml');
+        $db_user = $adapter->get("db_user");
+        $expected = "my_user";
+        $this->assertEquals($expected, $db_user);
+    }
 }
