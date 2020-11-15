@@ -22,7 +22,7 @@ class FileAdapter implements AdapterInterface
                 $this->data = include $file_path;
             break;
             default:
-                throw new Exception('wrong extension');
+                throw new \Exception('wrong extension');
         } 
     }
 
